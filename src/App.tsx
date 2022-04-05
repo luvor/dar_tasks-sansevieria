@@ -1,12 +1,15 @@
 import { useContext } from "react";
 import { Routes, Route } from "react-router-dom";
 import styled, { ThemeProvider } from "styled-components";
+import { basename } from "./assets/vars";
 import SideBar from "./components/sideBar/SideBar";
 
-import { ThemeContext, ThemeHandlerProvider } from "./contexts/ThemeContext";
+import { ThemeContext } from "./contexts/ThemeContext";
 import { UserProvider } from "./contexts/UserContext";
 import IndexPage from "./pages/indexPage/IndexPage";
+import LoginPage from "./pages/loginPage/LoginPage";
 import MoviesAll from "./pages/moviesAll/MoviesAll";
+import ProfilePage from "./pages/profilePage/ProfilePage";
 import Settings from "./pages/settings/Settings";
 
 function App() {
@@ -19,9 +22,14 @@ function App() {
             <SideBar />
             <MainContent>
               <Routes>
-                <Route path="/settings" element={<Settings />} />
-                <Route path="/movies/all" element={<MoviesAll />} />
-                <Route path="/" element={<IndexPage />} />
+                <Route path={basename + "/settings"} element={<Settings />} />
+                <Route
+                  path={basename + "/movies/all"}
+                  element={<MoviesAll />}
+                />
+                <Route path={basename + "/profile"} element={<ProfilePage />} />
+                <Route path={basename + "/login"} element={<LoginPage />} />
+                <Route path={basename + "/"} element={<IndexPage />} />
               </Routes>
             </MainContent>
           </Wrapper>
